@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'SiteController@index');
-Route::get('/test', 'SiteController@test');
 
+Route::get('/admins', 'Admin\\CategoryController@index');
 
 Auth::routes();
 
