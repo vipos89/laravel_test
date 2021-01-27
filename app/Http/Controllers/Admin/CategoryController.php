@@ -16,12 +16,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $category = Category::where([
-            ['id', '>', 2],
-            ['isActive', true],
-        ])
-            ->orWhere('id', '1')
-            ->get();
 
         return view('admin.category.index', compact('categories'));
     }
