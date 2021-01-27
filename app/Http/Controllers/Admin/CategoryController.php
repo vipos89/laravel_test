@@ -16,7 +16,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-
         return view('admin.category.index', compact('categories'));
     }
 
@@ -27,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -38,7 +37,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Category::create($request->except('_token'));
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -60,7 +61,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('admin.category.edit', ['category' => $category]);
     }
 
     /**
@@ -72,7 +75,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->fill($request->all());
+        $category->is_active = $request->input('is_active', false);
+        $category->save();
+
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -83,6 +91,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        Category::destroy($id);
     }
 }

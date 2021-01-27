@@ -11,7 +11,7 @@
 
         <div class="card mb-4">
             <div class="card-header">
-                DataTable Example
+                <a href="{{ route('admin_create_category') }}">Добавление категории</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -24,18 +24,7 @@
                                        cellspacing="0" role="grid" aria-describedby="dataTable_info"
                                        style="width: 100%;">
                                     <thead>
-                                    <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                            colspan="1" aria-sort="ascending"
-                                            aria-label="Name: activate to sort column descending" style="width: 265px;">
-                                            Name
-                                        </th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                            colspan="1" aria-label="Position: activate to sort column ascending"
-                                            style="width: 400px;">Action
-                                        </th>
 
-                                    </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
@@ -47,7 +36,10 @@
                                     @foreach($categories as $category)
                                     <tr role="row" class="odd">
                                         <td>{{ $category->name }}</td>
-                                        <td>Accountant</td>
+                                        <td>
+                                            <a class="btn btn-info" href="{{route('admin_category_edit', ['id' =>$category->id])}}">Редактировать</a>
+                                            <a class="btn btn-info" href="{{route('admin_category_edit', ['id' =>$category->id])}}">Редактировать</a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                     </tbody>
