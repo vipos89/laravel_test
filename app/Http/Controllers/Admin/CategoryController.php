@@ -50,7 +50,12 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $category = Category::find($id);
+        $companies = $category->companies()->where('id', '>', 10)->get();
+
+        dump($companies);
+
     }
 
     /**

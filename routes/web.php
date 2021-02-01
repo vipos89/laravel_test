@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,16 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'SiteController@index');
 
 Route::get('/admins', 'Admin\\CategoryController@index')->name('dashboard');
-Route::get('/admins/category/create', 'Admin\\CategoryController@create')
-    ->name('admin_create_category');
-Route::post('/admins/category/create', 'Admin\\CategoryController@store')
-    ->name('admin_category_store');
-Route::get('/admins/category/{id}/create', 'Admin\\CategoryController@edit')
-    ->name('admin_category_edit');
-Route::put('/admins/category/{id}/update', 'Admin\\CategoryController@update')
-    ->name('admin_category_update');
-Route::delete('/admins/category/{id}/update', 'Admin\\CategoryController@update')
-    ->name('admin_category_update');
+Route::resource('/admins/category',  'Admin\\CategoryController')->names('admin.category');
+Route::resource('/admins/company',  'Admin\\CompanyController')->names('admin.company');
+
 
 
 Auth::routes();

@@ -11,7 +11,7 @@
 
         <div class="card mb-4">
             <div class="card-header">
-                <a href="{{ route('admin_create_category') }}">Добавление категории</a>
+                <a href="{{ route('admin.category.create') }}">Добавление категории</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -37,8 +37,7 @@
                                     <tr role="row" class="odd">
                                         <td>{{ $category->name }}</td>
                                         <td>
-                                            <a class="btn btn-info" href="{{route('admin_category_edit', ['id' =>$category->id])}}">Редактировать</a>
-                                            <a class="btn btn-info" href="{{route('admin_category_edit', ['id' =>$category->id])}}">Редактировать</a>
+                                            <a class="btn btn-info" href="{{route('admin.category.edit', ['category' =>$category->id])}}">Редактировать</a>
                                         </td>
                                     </tr>
                                     @endforeach
