@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'SiteController@index');
 
-Route::get('/admins', 'Admin\\CategoryController@index')->name('dashboard');
-Route::resource('/admins/category',  'Admin\\CategoryController')->names('admin.category');
-Route::resource('/admins/company',  'Admin\\CompanyController')->names('admin.company');
-
+Route::prefix('admins')->namespace('Admin')->middleware(['role:admin'])
+    ->group(function () {
+        Route::get('/', 'CategoryController@index')->name('dashboard');
+        Route::resource('/category', 'CategoryController')->names('admin.category');
+        Route::resource('/company', 'CompanyController')->names('admin.company');
+});
 
 
 Auth::routes();

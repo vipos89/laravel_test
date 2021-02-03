@@ -8,6 +8,7 @@ class Company extends Model
 {
     protected $fillable = ['name', 'description', 'address', 'location', 'category_id'];
 
+
     public function category()
     {
         return $this->belongsTo(Category::class);
